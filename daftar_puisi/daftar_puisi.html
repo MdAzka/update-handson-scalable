@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Daftar Puisi - Puisi Stateful</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+
+<body>
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <h1>Puisi Stateful</h1>
+
+            <p>
+                Ruang untuk menulis dan menyimpan karya.
+            </p>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+        <section class="page-section">
+
+
+            <div class="card poetry-list-card">
+
+                <a
+                    href="../index.html"
+                    class="back-button">
+
+                    ← Kembali ke Dashboard
+
+                </a>
+
+                <div class="section-title">
+
+                    <span class="small-label">
+                        PUISI STATEFUL
+                    </span>
+
+                    <h2>
+                        Daftar Puisi
+                    </h2>
+
+                    <p>
+                        Kumpulan puisi yang telah
+                        tersimpan dalam sistem.
+                    </p>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Judul
+                                </th>
+
+                                <th>
+                                    Kategori
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="puisiTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div
+                    id="loadingMessage"
+                    class="empty-state">
+
+                    Memuat daftar puisi...
+
+                </div>
+
+                <div
+                    id="puisiMessage"
+                    class="message">
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            © 2026 Puisi Stateful
+        </p>
+
+        <p>
+            PHP Native · MySQL · Server-Side Session
+        </p>
+
+    </footer>
+
+    <script src="daftar_puisi.js"></script>
+
+</body>
+
+</html>
