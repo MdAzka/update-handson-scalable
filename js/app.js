@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const accessDeniedSection =
         document.getElementById("accessDeniedSection");
 
+    const componentDemoSection =
+        document.getElementById("componentDemoSection");
+
     const userInfo =
         document.getElementById("userInfo");
 
@@ -71,6 +74,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const registerMessage =
         document.getElementById("registerMessage");
 
+    const demoComponentButton =
+        document.getElementById("demoComponentButton");
+
+    const backFromDemo =
+        document.getElementById("backFromDemo");
+
     let isLoggedIn = false;
 
     function hideAllSections() {
@@ -84,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
         dashboardSection.classList.add("hidden");
 
         accessDeniedSection.classList.add("hidden");
+
+        componentDemoSection.classList.add("hidden");
 
     }
 
@@ -143,6 +154,14 @@ document.addEventListener("DOMContentLoaded", function () {
         hideAllSections();
 
         accessDeniedSection.classList.remove("hidden");
+
+    }
+
+    function showComponentDemo() {
+
+        hideAllSections();
+
+        componentDemoSection.classList.remove("hidden");
 
     }
 
@@ -556,6 +575,120 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
     );
+
+    demoComponentButton.addEventListener(
+        "click",
+        function () {
+
+            showComponentDemo();
+
+        }
+    );
+
+    backFromDemo.addEventListener(
+        "click",
+        function () {
+
+            showHome();
+
+        }
+    );
+
+
+    // =====================================================
+    // KOMPONEN: Pemilih template gambar + preview puisi
+    // Murni interaksi tampilan (client-side), tidak memanggil
+    // API/database apapun. Fungsi ini nanti dipanggil ulang
+    // di halaman submit_puisi/ dengan data form yang asli.
+    // =====================================================
+
+    const demoJudul =
+        document.getElementById("demoJudul");
+
+    const demoPenulis =
+        document.getElementById("demoPenulis");
+
+    const demoBait =
+        document.getElementById("demoBait");
+
+    const templatePicker =
+        document.getElementById("templatePicker");
+
+    const poemPreviewFrame =
+        document.getElementById("poemPreviewFrame");
+
+    const previewJudul =
+        document.getElementById("previewJudul");
+
+    const previewPenulis =
+        document.getElementById("previewPenulis");
+
+    const previewBait =
+        document.getElementById("previewBait");
+
+    function updatePoemPreview() {
+
+        if (!poemPreviewFrame) {
+            return;
+        }
+
+        previewJudul.textContent =
+            demoJudul.value.trim() || "Judul Puisi";
+
+        previewPenulis.textContent =
+            "by " + (demoPenulis.value.trim() || "Nama Penulis");
+
+        previewBait.textContent =
+            demoBait.value.trim() ||
+            "Bait puisi akan tampil di sini.";
+
+    }
+
+    function selectTemplate(button) {
+
+        const options =
+            templatePicker.querySelectorAll(".template-option");
+
+        options.forEach(function (option) {
+
+            option.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        const templatePath =
+            button.getAttribute("data-template");
+
+        poemPreviewFrame.style.backgroundImage =
+            "url('" + templatePath + "')";
+
+    }
+
+    if (poemPreviewFrame) {
+
+        demoJudul.addEventListener("input", updatePoemPreview);
+
+        demoBait.addEventListener("input", updatePoemPreview);
+
+        templatePicker
+            .querySelectorAll(".template-option")
+            .forEach(function (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        selectTemplate(button);
+
+                    }
+                );
+
+            });
+
+        updatePoemPreview();
+
+    }
 
     userInfo.classList.add("hidden");
 

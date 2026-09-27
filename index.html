@@ -1,560 +1,403 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Puisi Stateful</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-
-<body>
-
+  <body>
     <header class="navbar">
+      <div class="logo">
+        <h1>Puisi Stateful</h1>
 
-        <div class="logo">
+        <p>Ruang untuk menulis, menyimpan, dan berbagi karya puisi.</p>
+      </div>
 
-            <h1>Puisi Stateful</h1>
+      <div id="userInfo" class="user-info hidden">
+        <span id="welcomeUser"></span>
 
-            <p>
-                Ruang untuk menulis, menyimpan,
-                dan berbagi karya puisi.
-            </p>
-
-        </div>
-
-        <div id="userInfo" class="user-info hidden">
-
-            <span id="welcomeUser"></span>
-
-            <button
-                id="logoutButton"
-                class="btn btn-logout"
-                type="button">
-
-                Logout
-
-            </button>
-
-        </div>
-
+        <button id="logoutButton" class="btn btn-logout" type="button">
+          Logout
+        </button>
+      </div>
     </header>
 
-
     <main class="container">
+      <section id="homeSection" class="home-section">
+        <div class="hero">
+          <span class="hero-label"> PUISI STATEFUL </span>
 
+          <h2>
+            Setiap perasaan<br />
+            punya cerita.
+          </h2>
 
-        <section id="homeSection" class="home-section">
+          <p>Tuliskan kata-kata yang ingin kamu abadikan dalam sebuah puisi.</p>
 
-            <div class="hero">
+          <div class="hero-buttons">
+            <button id="loginButton" class="btn btn-primary" type="button">
+              Login
+            </button>
 
-                <span class="hero-label">
-                    PUISI STATEFUL
-                </span>
+            <button id="registerButton" class="btn btn-secondary" type="button">
+              Register
+            </button>
+          </div>
+        </div>
 
+        <!-- Informasi fitur -->
 
-                <h2>
-                    Setiap perasaan<br>
-                    punya cerita.
-                </h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">✎</div>
 
+            <h3>Tulis Puisi</h3>
 
-                <p>
-                    Tuliskan kata-kata yang ingin kamu
-                    abadikan dalam sebuah puisi.
+            <p>Simpan karya puisi kamu secara terstruktur.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">♡</div>
+
+            <h3>Koleksi Karya</h3>
+
+            <p>Lihat kembali puisi yang telah kamu simpan.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+
+            <h3>Stateful Session</h3>
+
+            <p>Data puisi hanya dapat diakses setelah login.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="loginSection" class="page-section hidden">
+        <div class="card auth-card">
+          <button id="backFromLogin" class="back-button" type="button">
+            ← Kembali
+          </button>
+
+          <div class="section-title">
+            <span class="small-label"> PUISI STATEFUL </span>
+
+            <h2>Login</h2>
+
+            <p>Masuk ke akun kamu untuk melanjutkan.</p>
+          </div>
+
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="loginUsername"> Username </label>
+
+              <input
+                type="text"
+                id="loginUsername"
+                name="username"
+                placeholder="Masukkan username"
+                autocomplete="username"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword"> Password </label>
+
+              <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                placeholder="Masukkan password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary full-button">
+              Login
+            </button>
+          </form>
+
+          <div id="loginMessage" class="message"></div>
+
+          <p class="switch-auth">
+            Belum memiliki akun?
+
+            <button id="toRegister" type="button" class="link-button">
+              Daftar sekarang
+            </button>
+          </p>
+        </div>
+      </section>
+
+      <section id="registerSection" class="page-section hidden">
+        <div class="card auth-card">
+          <button id="backFromRegister" class="back-button" type="button">
+            ← Kembali
+          </button>
+
+          <div class="section-title">
+            <span class="small-label"> PUISI STATEFUL </span>
+
+            <h2>Buat Akun</h2>
+
+            <p>Daftar terlebih dahulu untuk mulai menyimpan puisi.</p>
+          </div>
+
+          <form id="registerForm">
+            <div class="form-group">
+              <label for="registerUsername"> Username </label>
+
+              <input
+                type="text"
+                id="registerUsername"
+                name="username"
+                placeholder="Buat username"
+                autocomplete="username"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="registerNama"> Nama Lengkap </label>
+
+              <input
+                type="text"
+                id="registerNama"
+                name="nama"
+                placeholder="Masukkan nama lengkap"
+                autocomplete="name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="registerPassword"> Password </label>
+
+              <input
+                type="password"
+                id="registerPassword"
+                name="password"
+                placeholder="Buat password"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary full-button">
+              Register
+            </button>
+          </form>
+
+          <div id="registerMessage" class="message"></div>
+
+          <p class="switch-auth">
+            Sudah memiliki akun?
+
+            <button id="toLogin" type="button" class="link-button">
+              Login
+            </button>
+          </p>
+        </div>
+      </section>
+
+      <section id="dashboardSection" class="page-section hidden">
+        <!-- Welcome -->
+
+        <div class="dashboard-header">
+          <div>
+            <span class="small-label"> PUISI STATEFUL </span>
+
+            <h2 id="dashboardTitle">Selamat datang</h2>
+
+            <p>Pilih apa yang ingin kamu lakukan.</p>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <button id="submitPuisiButton" class="dashboard-card" type="button">
+            <div class="dashboard-icon">✎</div>
+
+            <div>
+              <h3>Tulis Puisi</h3>
+
+              <p>Buat dan simpan karya puisi baru.</p>
+            </div>
+
+            <span class="arrow"> → </span>
+          </button>
+
+          <button id="daftarPuisiButton" class="dashboard-card" type="button">
+            <div class="dashboard-icon">♡</div>
+
+            <div>
+              <h3>Daftar Puisi</h3>
+
+              <p>Lihat koleksi puisi yang telah disimpan.</p>
+            </div>
+
+            <span class="arrow"> → </span>
+          </button>
+        </div>
+      </section>
+
+      <section id="accessDeniedSection" class="page-section hidden">
+        <div class="card access-card">
+          <div class="lock-icon">🔒</div>
+
+          <h2>Akses Terbatas</h2>
+
+          <p>
+            Kamu harus melakukan register dan login terlebih dahulu untuk
+            mengakses fitur ini.
+          </p>
+
+          <button id="accessLoginButton" class="btn btn-primary" type="button">
+            Login
+          </button>
+
+          <button
+            id="accessRegisterButton"
+            class="btn btn-secondary"
+            type="button"
+          >
+            Register
+          </button>
+        </div>
+      </section>
+
+      <!-- ======================================================= -->
+      <!-- KOMPONEN BARU: Demo pemilih template gambar + preview   -->
+      <!-- kutipan puisi. Murni tampilan (client-side), tanpa      -->
+      <!-- database/API. Komponen ini yang nanti dipakai ulang di  -->
+      <!-- halaman submit_puisi/ oleh bagian FE yang mengerjakan   -->
+      <!-- form input sungguhan (Laptop 2), dengan data asli.      -->
+      <!-- ======================================================= -->
+
+      <section id="componentDemoSection" class="page-section hidden">
+        <button id="backFromDemo" class="back-button" type="button">
+          ← Kembali
+        </button>
+
+        <div class="section-title">
+          <span class="small-label"> KOMPONEN TAMPILAN </span>
+
+          <h2>Pilih Template &amp; Preview Puisi</h2>
+        </div>
+
+        <div class="demo-grid">
+          <div class="card demo-form-card">
+            <div class="form-group">
+              <label for="demoJudul"> Judul Puisi </label>
+
+              <input
+                type="text"
+                id="demoJudul"
+                placeholder="Contoh: Malam Sunyi"
+                value="Lorem Ipsum"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="demoPenulis"> Nama Penulis </label>
+
+              <input type="text" id="demoPenulis" value="John Doe" disabled />
+            </div>
+
+            <div class="form-group">
+              <label for="demoBait"> Bait / Kutipan Puisi </label>
+
+              <textarea
+                id="demoBait"
+                rows="4"
+                placeholder="Tuliskan bait yang ingin ditampilkan di gambar"
+              >
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</textarea
+              >
+            </div>
+
+            <label class="form-group-label"> Pilih Template Gambar </label>
+
+            <div id="templatePicker" class="template-picker">
+              <button
+                type="button"
+                class="template-option active"
+                data-template="assets/templates/latar1.jpeg"
+              >
+                <img src="assets/templates/latar1.jpeg" alt="Template 1" />
+              </button>
+
+              <button
+                type="button"
+                class="template-option"
+                data-template="assets/templates/latar2.jpeg"
+              >
+                <img src="assets/templates/latar2.jpeg" alt="Template 2" />
+              </button>
+
+              <button
+                type="button"
+                class="template-option"
+                data-template="assets/templates/latar3.jpeg"
+              >
+                <img src="assets/templates/latar3.jpeg" alt="Template 3" />
+              </button>
+
+              <button
+                type="button"
+                class="template-option"
+                data-template="assets/templates/latar4.jpeg"
+              >
+                <img src="assets/templates/latar4.jpeg" alt="Template 4" />
+              </button>
+            </div>
+          </div>
+
+          <div class="demo-preview-card">
+            <span class="small-label"> PREVIEW </span>
+
+            <div
+              id="poemPreviewFrame"
+              class="poem-preview-frame"
+              style="
+                background-image: url(&quot;assets/templates/latar1.jpeg&quot;);
+              "
+            >
+              <div class="poem-preview-overlay">
+                <h3 id="previewJudul" class="poem-preview-title">
+                  Lorem Ipsum
+                </h3>
+
+                <p id="previewPenulis" class="poem-preview-author">
+                  by John Doe
                 </p>
 
-
-                <div class="hero-buttons">
-
-                    <button
-                        id="loginButton"
-                        class="btn btn-primary"
-                        type="button">
-
-                        Login
-
-                    </button>
-
-
-                    <button
-                        id="registerButton"
-                        class="btn btn-secondary"
-                        type="button">
-
-                        Register
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- Informasi fitur -->
-
-            <div class="feature-grid">
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        ✎
-                    </div>
-
-                    <h3>
-                        Tulis Puisi
-                    </h3>
-
-                    <p>
-                        Simpan karya puisi kamu
-                        secara terstruktur.
-                    </p>
-
-                </div>
-
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        ♡
-                    </div>
-
-                    <h3>
-                        Koleksi Karya
-                    </h3>
-
-                    <p>
-                        Lihat kembali puisi yang
-                        telah kamu simpan.
-                    </p>
-
-                </div>
-
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        🔒
-                    </div>
-
-                    <h3>
-                        Stateful Session
-                    </h3>
-
-                    <p>
-                        Data puisi hanya dapat
-                        diakses setelah login.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <section
-            id="loginSection"
-            class="page-section hidden">
-
-
-            <div class="card auth-card">
-
-                <button
-                    id="backFromLogin"
-                    class="back-button"
-                    type="button">
-
-                    ← Kembali
-
-                </button>
-
-
-                <div class="section-title">
-
-                    <span class="small-label">
-                        PUISI STATEFUL
-                    </span>
-
-                    <h2>
-                        Login
-                    </h2>
-
-                    <p>
-                        Masuk ke akun kamu untuk
-                        melanjutkan.
-                    </p>
-
-                </div>
-
-
-                <form id="loginForm">
-
-
-                    <div class="form-group">
-
-                        <label for="loginUsername">
-                            Username
-                        </label>
-
-                        <input
-                            type="text"
-                            id="loginUsername"
-                            name="username"
-                            placeholder="Masukkan username"
-                            autocomplete="username"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="loginPassword">
-                            Password
-                        </label>
-
-                        <input
-                            type="password"
-                            id="loginPassword"
-                            name="password"
-                            placeholder="Masukkan password"
-                            autocomplete="current-password"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary full-button">
-
-                        Login
-
-                    </button>
-
-
-                </form>
-
-
-                <div
-                    id="loginMessage"
-                    class="message">
-                </div>
-
-
-                <p class="switch-auth">
-
-                    Belum memiliki akun?
-
-                    <button
-                        id="toRegister"
-                        type="button"
-                        class="link-button">
-
-                        Daftar sekarang
-
-                    </button>
-
+                <p id="previewBait" class="poem-preview-body">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua
                 </p>
 
+                <span class="poem-preview-arrow"> → </span>
+              </div>
             </div>
-
-        </section>
-
-        <section
-            id="registerSection"
-            class="page-section hidden">
-
-
-            <div class="card auth-card">
-
-                <button
-                    id="backFromRegister"
-                    class="back-button"
-                    type="button">
-
-                    ← Kembali
-
-                </button>
-
-
-                <div class="section-title">
-
-                    <span class="small-label">
-                        PUISI STATEFUL
-                    </span>
-
-                    <h2>
-                        Buat Akun
-                    </h2>
-
-                    <p>
-                        Daftar terlebih dahulu untuk
-                        mulai menyimpan puisi.
-                    </p>
-
-                </div>
-
-
-                <form id="registerForm">
-
-
-                    <div class="form-group">
-
-                        <label for="registerUsername">
-                            Username
-                        </label>
-
-                        <input
-                            type="text"
-                            id="registerUsername"
-                            name="username"
-                            placeholder="Buat username"
-                            autocomplete="username"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="registerNama">
-                            Nama Lengkap
-                        </label>
-
-                        <input
-                            type="text"
-                            id="registerNama"
-                            name="nama"
-                            placeholder="Masukkan nama lengkap"
-                            autocomplete="name"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="registerPassword">
-                            Password
-                        </label>
-
-                        <input
-                            type="password"
-                            id="registerPassword"
-                            name="password"
-                            placeholder="Buat password"
-                            autocomplete="new-password"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn btn-primary full-button">
-
-                        Register
-
-                    </button>
-
-
-                </form>
-
-
-                <div
-                    id="registerMessage"
-                    class="message">
-                </div>
-
-
-                <p class="switch-auth">
-
-                    Sudah memiliki akun?
-
-                    <button
-                        id="toLogin"
-                        type="button"
-                        class="link-button">
-
-                        Login
-
-                    </button>
-
-                </p>
-
-            </div>
-
-        </section>
-
-        <section
-            id="dashboardSection"
-            class="page-section hidden">
-
-
-            <!-- Welcome -->
-
-            <div class="dashboard-header">
-
-                <div>
-
-                    <span class="small-label">
-                        PUISI STATEFUL
-                    </span>
-
-                    <h2 id="dashboardTitle">
-                        Selamat datang
-                    </h2>
-
-                    <p>
-                        Pilih apa yang ingin kamu lakukan.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="dashboard-grid">
-
-                <button
-                    id="submitPuisiButton"
-                    class="dashboard-card"
-                    type="button">
-
-                    <div class="dashboard-icon">
-                        ✎
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Tulis Puisi
-                        </h3>
-
-                        <p>
-                            Buat dan simpan karya
-                            puisi baru.
-                        </p>
-
-                    </div>
-
-                    <span class="arrow">
-                        →
-                    </span>
-
-                </button>
-
-                <button
-                    id="daftarPuisiButton"
-                    class="dashboard-card"
-                    type="button">
-
-                    <div class="dashboard-icon">
-                        ♡
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Daftar Puisi
-                        </h3>
-
-                        <p>
-                            Lihat koleksi puisi
-                            yang telah disimpan.
-                        </p>
-
-                    </div>
-
-                    <span class="arrow">
-                        →
-                    </span>
-
-                </button>
-
-            </div>
-
-        </section>
-
-        <section
-            id="accessDeniedSection"
-            class="page-section hidden">
-
-
-            <div class="card access-card">
-
-                <div class="lock-icon">
-                    🔒
-                </div>
-
-
-                <h2>
-                    Akses Terbatas
-                </h2>
-
-
-                <p>
-                    Kamu harus melakukan register
-                    dan login terlebih dahulu untuk
-                    mengakses fitur ini.
-                </p>
-
-
-                <button
-                    id="accessLoginButton"
-                    class="btn btn-primary"
-                    type="button">
-
-                    Login
-
-                </button>
-
-
-                <button
-                    id="accessRegisterButton"
-                    class="btn btn-secondary"
-                    type="button">
-
-                    Register
-
-                </button>
-
-            </div>
-
-        </section>
-
-
+          </div>
+        </div>
+      </section>
     </main>
 
-
     <footer>
+      <p>© 2026 Puisi Stateful</p>
 
-        <p>
-            © 2026 Puisi Stateful
-        </p>
-
-        <p>
-            PHP Native · MySQL · Server-Side Session
-        </p>
-
+      <p>PHP Native · MySQL · Server-Side Session</p>
     </footer>
 
-
     <script src="js/app.js"></script>
-
-</body>
-
+  </body>
 </html>
