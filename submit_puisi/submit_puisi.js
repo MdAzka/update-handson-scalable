@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const API_URL = "../server.php";
-  const CLOUDFRONT_URL = "https://d16t0mhw7tte9u.cloudfront.net/fungsi";
+  const CLOUDFRONT_URL = "https://d1mwmyki7vvl0b.cloudfront.net/fungsi";
 
   const puisiForm = document.getElementById("puisiForm");
   const puisiMessage = document.getElementById("puisiMessage");
